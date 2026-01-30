@@ -19,9 +19,9 @@
     <style>
         /* Detail Page Specific Styles */
         .app-hero {
-            padding: 180px 0 100px;
-            background: linear-gradient(180deg, #fffcf9 0%, #ffffff 100%);
-            border-bottom: 1px solid var(--border-color);
+            padding-top: 150px;
+            padding-bottom: 80px;
+            background: linear-gradient(180deg, rgba(255, 48, 48, 0.05) 0%, var(--bg-primary) 100%);
         }
 
         .app-hero-layout {
@@ -34,14 +34,16 @@
         .icon-box-large {
             width: 80px;
             height: 80px;
-            background: #fff0e6;
+            background: rgba(255, 255, 255, 0.05);
+            /* Dark theme bg */
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
             color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(243, 112, 33, 0.15);
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 48, 48, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .icon-box-large i {
@@ -112,7 +114,8 @@
         /* Features Section */
         .features-section {
             padding: 100px 0;
-            background: white;
+            background-color: var(--bg-secondary);
+            /* Darker section */
         }
 
         .features-grid {
@@ -123,15 +126,30 @@
         }
 
         .feature-item {
-            padding: 30px;
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: var(--card-bg);
+            /* Dark card */
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(255, 48, 48, 0.1);
         }
 
         .feature-icon {
-            margin-bottom: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--accent-color);
+            margin-bottom: 20px;
         }
 
         .feature-title {
@@ -150,6 +168,7 @@
         .steps-section {
             padding: 100px 0;
             border-top: 1px solid var(--border-color);
+            background-color: var(--bg-primary);
         }
 
         .step-list {
@@ -158,7 +177,8 @@
             gap: 0;
             max-width: 800px;
             margin: 0 auto;
-            border-left: 2px solid var(--bg-secondary);
+            border-left: 2px solid var(--border-color);
+            /* Visible on dark */
             padding-left: 40px;
         }
 
@@ -175,12 +195,13 @@
             position: absolute;
             left: -51px;
             top: 5px;
-            /* Adjusted for better alignment with title */
             width: 20px;
             height: 20px;
-            background: white;
+            background: var(--bg-primary);
+            /* Dark bg to mask line if needed, or just circle */
             border: 4px solid var(--accent-color);
             border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 48, 48, 0.4);
         }
 
         .step-title {
@@ -362,10 +383,15 @@
 </head>
 
 <body>
+    <!-- KITT Scanner Animation -->
+    <div class="kitt-scanner-container">
+        <div class="kitt-scanner-bar"></div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">TENSOR</a>
+    <nav class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">KITT</a>
             <div class="nav-links">
                 <a href="index.html#about">About</a>
                 <a href="apps.html" style="color: var(--accent-color);">Apps</a>
@@ -533,29 +559,27 @@
             <div class="footer-main">
                 <h2 class="footer-copy">
                     가장 중요한 일에만 집중할 때, 삶은 완성됩니다.<br>
-                    지금, <strong>TENSOR</strong>와 함께 혁신을 시작하세요.
+                    지금, <strong>KITT</strong>와 함께 혁신을 시작하세요.
                 </h2>
-                <a href="mailto:contact@tensor.com" class="footer-cta">Contact Us <i data-lucide="arrow-right"></i></a>
+                <a href="mailto:contact@kitt-ai.com" class="footer-cta">Contact Us <i data-lucide="arrow-right"></i></a>
             </div>
             <div class="footer-info">
                 <div class="footer-brand">
-                    <h3>TENSOR</h3>
-                    <p>Automate. Create. Liberate.</p>
+                    <h3>KITT</h3>
+                    <div class="footer-contact-info">
+                        <p>Email: contact@kitt-ai.com</p>
+                        <p>Address: 서울특별시 서초구 언남길 82, 효정빌딩 301호</p>
+                        <p class="legal"><a href="#" style="color:var(--text-muted);">개인정보처리방침</a></p>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <a href="index.html#about">About</a>
-                    <a href="index.html#solutions">Solutions</a>
-                    <a href="index.html#case-study">Case Study</a>
-                    <a href="index.html#contact">Contact</a>
-                </div>
-                <div class="footer-contact">
-                    <p>Email: contact@tensor.com</p>
-                    <p>Address: Siheung-si, Gyeonggi-do</p>
-                    <p class="legal"><a href="#">개인정보처리방침</a></p>
+                <div class="footer-sns">
+                    <a href="#" class="sns-link" aria-label="Instagram">
+                        <i data-lucide="instagram"></i>
+                    </a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 TENSOR. All Rights Reserved.</p>
+                <p>&copy; 2025 KITT. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
