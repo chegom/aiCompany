@@ -6,10 +6,10 @@
     --bg-secondary: #f8f9fa;
     /* Off-white for section separation */
     --text-color: #1e293b;
-    /* KITT Color Palette */
+    /* kitt Color Palette */
     --primary-color: #000000;
     --accent-color: #ff3030;
-    /* KITT Iconic Red */
+    /* kitt Iconic Red */
     --text-color: #f0f0f0;
     --text-muted: #8892b0;
     --bg-primary: #050810;
@@ -193,7 +193,7 @@ ul {
     }
 }
 
-/* Hero Section - KITT Theme */
+/* Hero Section - kitt Theme */
 .hero-section {
     height: 100vh;
     /* Fixed height for pinning */
