@@ -201,10 +201,10 @@ ul {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
+    /* Ensure horizontal centering */
     overflow: hidden;
     padding: 0;
-    /* Clear padding as we use full height flex centering */
-
     /* Car Paint Finish: Deep Navy Black with Specular Highlight */
     background:
         radial-gradient(circle at 50% 0%, #1c2333 0%, #050810 60%, #000000 100%);
@@ -216,10 +216,11 @@ ul {
     width: 100%;
     height: 100%;
     z-index: 1;
-    /* Transparent background to show hero gradient */
 }
 
-.hero-layout {
+.hero-layout,
+.hero-content {
+    /* Added .hero-content alias if needed or rely on existing class */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
@@ -227,18 +228,26 @@ ul {
     position: relative;
     z-index: 10;
     width: 100%;
+    max-width: var(--container-width);
+    /* Enforce max-width for centering */
+    margin: 0 auto;
+    /* Double check centering */
 }
 
 .hero-text-col {
-    max-width: 700px;
+    max-width: 100%;
+    /* Allow full width of grid cell */
 }
 
 .hero-visual-col {
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
+    /* Ensure vertical centering of visual */
     perspective: 1000px;
 }
+
 
 .hero-main-copy {
     font-size: clamp(1.5rem, 3vw, 2.2rem);
@@ -1175,7 +1184,6 @@ ul {
         font-size: 1.4rem;
     }
 }
-}
 
 /* Fade In Animation Utility */
 @keyframes fadeInUp {
@@ -1198,4 +1206,116 @@ ul {
     opacity: 1;
     animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     animation-delay: 0.2s;
+}
+
+/* KITT Scanner Animation */
+.kitt-scanner-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 16/9;
+    margin: 0 auto;
+}
+
+/* SVG Bonnet Lines */
+.bonnet-lines {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.bonnet-line {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
+}
+
+/* Red Eye Container */
+.red-eye {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out 0.8s forwards;
+    z-index: 20;
+}
+
+/* Scanner Beam */
+.eye-scanner {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            rgba(255, 0, 0, 0) 0%,
+            rgba(255, 0, 0, 0.8) 5%,
+            var(--accent-color) 25%,
+            #fff 50%,
+            var(--accent-color) 75%,
+            rgba(255, 0, 0, 0.8) 95%,
+            rgba(255, 0, 0, 0) 100%);
+    box-shadow:
+        0 0 15px var(--accent-color),
+        0 0 30px var(--accent-color),
+        0 0 45px rgba(255, 0, 0, 0.8);
+    animation: scanLeftRight 2.5s linear infinite alternate, pulse 0.5s ease-in-out infinite alternate;
+}
+
+/* Scanner Beam Glow Effects */
+.eye-scanner::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 400%;
+    background: radial-gradient(ellipse at center,
+            rgba(255, 48, 48, 0.4) 0%,
+            rgba(255, 48, 48, 0.1) 40%,
+            transparent 70%);
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+/* Animations */
+@keyframes scanLeftRight {
+    0% {
+        left: 0%;
+        transform: translate(0%, -50%);
+    }
+
+    100% {
+        left: 100%;
+        transform: translate(-100%, -50%);
+    }
+}
+
+@keyframes pulse {
+    from {
+        filter: brightness(1);
+    }
+
+    to {
+        filter: brightness(1.5);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
